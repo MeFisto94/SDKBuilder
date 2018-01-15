@@ -8,3 +8,5 @@ WORKDIR /sdk_build/
 COPY docker_entrypoint.sh /sdk_build/
 COPY download-jdks.patch /sdk_build/
 VOLUME /dist
+
+CMD ["/bin/sh", "/sdk_build/docker_entrypoint.sh"]
