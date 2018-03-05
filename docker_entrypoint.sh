@@ -38,10 +38,8 @@ echo "Patching the Engine Artifacts...."
 ./fix_engine.sh
 echo "Building the SDK itself...."
 ./gradlew buildSdk
-echo "Patching the JDK Downloader"
-cd jdks && patch -N < ../../download-jdks.patch
 echo "Downloading the JDKs...."
-./download-jdks.sh && rm -rf local/*/{downloads,linux-i586,linux-x64,windows-i586,windows-x64} && cd ../
+cd jdks && ./download-jdks.sh && rm -rf local/*/{downloads,linux-i586,linux-x64,windows-i586,windows-x64} && cd ../
 # ant -Dstorepass="$NBM_SIGN_PASS" -Dpack200.enabled=true set-spec-version build-installers unset-spec-version | awk '{printf("."); fflush(stdout)}'
 ant -Dpack200.enabled=true set-spec-version build-installers unset-spec-version | awk '{printf(".");fflush(stdout)}'
 mv dist/* /dist
